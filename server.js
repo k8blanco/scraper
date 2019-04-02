@@ -61,15 +61,15 @@ mongoose.connect(MONGODB_URI);
 //Main Route
 app.get("/", (req, res) => {
     db.Article.find({})
-    .then(function(dbArticle){
-        let hbsobj = {
-            article: dbArticle
-        };
-       res.render("index", hbsobj)
-    })
-    .catch(function(err){
-        res.json(err);
-    })
+        .then(function (dbArticle) {
+            let hbsobj = {
+                article: dbArticle
+            };
+            res.render("index", hbsobj)
+        })
+        .catch(function (err) {
+            res.json(err);
+        })
 });
 
 //GET route for scraping the website
@@ -100,7 +100,7 @@ app.get("/scrape", function (req, res) {
                 .siblings()
                 .children(".entry-summary, p")
                 .text();
-        
+
             //Create a new Article using the 'result' object built from scraping
             db.Article.create(scrapeResult)
                 .then((dbArticle) => console.log(dbArticle))
@@ -112,56 +112,78 @@ app.get("/scrape", function (req, res) {
     });
 });
 
+//add route for grabbing a specific article by id and populate it with it's comment
+// app.get("/articles/:id", function (req, res) {
+//     //using the id passed in the id parameter, prepare a query that finds the matching one
+//     db.Article.findOne({
+//             _id: req.params.id
+//         })
+//         //..and populate all of the comments associated with it
+//         .populate("comment")
+//         .then(function (dbComment) {
+//             //create a handlebars object
+//             let hbsobj = {
+//                 commentTitle: dbComment.title,
+//                 commentBody: dbComment.body
+//             };
 
-// !! DON'T NEED THIS IF MAIN ROUTE GETS ALL ARTICLES ALREADY !!
-//Route for getting all Articles from the db
-// app.get("/articles", function (req, res) {
-//     //Grab every document in the articles collection
-//     db.Article.find({})
-//         .then(function (dbArticle) {
-//             //if we were able to successfully find articles, send them back to the client
+//             //render a handlebars object
+//             res.render("index", hbsobj);
+
+//             //if we were able to successfully find an article with the given id, send it back to the client
 //             res.json(dbArticle);
 //         })
+//         .catch(function (err) {
+//             res.json(err);
+//         });
 // });
 
-//add route for grabbing a specific article by id and populate it with it's comment
+//add route for displaying an article's comments
 app.get("/articles/:id", function (req, res) {
-    //using the id passed in the id parameter, prepare a query that finds the matching one
-    db.Article.findOne({
-            _id: req.params.id
-        })
-        //..and populate all of the comments associated with it
-        .populate("comment")
-        .then(function (dbArticle) {
-            //if we were able to successfully find an article with the given id, send it back to the client
-            res.json(dbArticle);
-        })
-        .catch(function (err) {
-            res.json(err);
-        });
+    console.log("grabbing comments for this article");
+    //find the article with this id in the DB
+    db.Article.findOne({ id: req.params.id })
+    //find all of the comments associated with it
+    .populate("comment")
+    //turn it into a handlebars object for easy reference
+    .then(function(dbArticle) {
+        //create the handlebars obj
+        let hbsobj = {
+            comment: dbArticle.comment
+        };
+        //render the handlebars obj
+        res.render(hbsobj);
+
+        //send article and comments with the given id back to user
+        res.json(dbArticle);
+    })
+    .catch(function (err) {
+        res.json(err);
+    });
 });
 
 //add route for saving/updating an article's associated comments
 app.post("/articles/:id", function (req, res) {
-    db.Comment.create(req.body)
-        .then(function (dbComment) {
-            return db.Article.findOneAndUpdate({
-                _id: req.paramas.id
-            }, {
-                comment: dbComment._id
-            }, {
-                new: true
+            console.log("Saving comment to DB");
+            db.Comment.create(req.body)
+                .then(function (dbComment) {
+                    return db.Article.findOneAndUpdate({
+                        id: req.params.id
+                    }, {
+                        comment: dbComment.id
+                    }, {
+                        new: true
+                    });
+                })
+                .then(function (dbArticle) {
+                    res.json(dbArticle);
+                })
+                .catch(function (err) {
+                    res.json(err)
+                });
             });
-        })
-        .then(function (dbArticle) {
-            res.json(dbArticle);
-        })
-        .catch(function (err) {
-            res.json(err)
-        });
-});
 
-//Start the server
-app.listen(PORT, function () {
-    console.log("App running on port " + PORT);
-});
+        //Start the server
+        app.listen(PORT, function () {
+            console.log("App running on port " + PORT);
+        });
