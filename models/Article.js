@@ -13,6 +13,10 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    summary: {
+        type: String,
+        required: true
+    },
     //an object that stores a comment id. the ref property links the ObjectId to the Comment model, 
     //which allows us to populate the Article with an associated Comment
     comment: {

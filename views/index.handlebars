@@ -1,13 +1,12 @@
-
 <nav>
     <div class="nav-wrapper">
         <a href="#" class="brand-logo">Scraper</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="!#">Home</a></li>
             <li><a href="!#">Saved Articles</a></li>
-            <li><a class="waves-effect waves-light btn" id="scraperBtn">Scrape Articles</a></li>
+            <li><a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
         </ul>
-        
+
     </div>
 </nav>
 
@@ -16,13 +15,34 @@
     <div id="wrapper">
         <h1>Note Scraper</h1>
         <h2><i>iF yOu CaN dO tHiS, tHe HoMeWoRk ShOuLd Be No PrObLeM.</i></h2>
-        <div id="instructions"><p>Instructions Here</p></div>
+
         <div id="articles">
-            {{#each articles}}
-                <div
-
-
+            <!--If there are articles in the DB-->
+            {{#if article}}
+            <!--Create card for each article-->
+            {{#each article}}
+            <div class="card">
+                <div class="card-content">
+                    <a href="{{link}}" target="_blank">
+                        <h4 class="card-title">{{title}}</h4>
+                    </a>
+                    <p class="summary">{{summary}}</p>
+                </div>
+                <!--button for saving/favoriting-->
+                <a class="waves-effect waves-light btn" href="/saved" id="saveBtn"><i class="far fa-save"></i></a>
+            </div>
+            {{/each}}
+            <!--Show empty card & scrape button if no articles in DB-->
+            {{else}}
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">No articles yet - try scraping!</h4>
+                    <a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
+                </div>
+            </div>
+            {{/if}}
         </div>
+
         <div id="comments"></div>
     </div>
 
