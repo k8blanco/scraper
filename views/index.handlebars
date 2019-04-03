@@ -15,35 +15,82 @@
     <div id="wrapper">
         <h1>Note Scraper</h1>
         <h2><i>iF yOu CaN dO tHiS, tHe HoMeWoRk ShOuLd Be No PrObLeM.</i></h2>
+        <h3>{{commentsTitle}}</h3>
 
-        <div id="articles">
-            <!--If there are articles in the DB-->
-            {{#if article}}
-            <!--Create card for each article-->
-            {{#each article}}
-            <div class="card">
-                <div class="card-content">
-                    <a href="{{link}}" target="_blank">
-                        <h4 class="card-title">{{title}}</h4>
-                    </a>
-                    <p class="summary">{{summary}}</p>
+        <div class="container">
+
+            <div id="articles">
+                <!--If there are articles in the DB-->
+                {{#if article}}
+                <!--Create card for each article-->
+                {{#each article}}
+                {{#unless saved}}
+
+                <div class="card">
+                    <div class="card-content">
+                        <a href="{{link}}" target="_blank">
+                            <h4 class="card-title">{{title}}</h4>
+                        </a>
+                        <h3>{{context.commentsTitle}}</h3>
+                        <h5 class="article-id">{{_id}}</h5>
+                        <p class="summary">{{summary}}</p>
+                    </div>
+                    <!--button for saving/favoriting-->
+                    <a class="waves-effect waves-light btn" href="/saved" id="saveBtn"><i class="far fa-save"></i></a>
+                    <!--button for commenting/viewing comments-->
+                    <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
+                        data-id="{{_id}}"><i class="far fa-comments"></i></a>
                 </div>
-                <!--button for saving/favoriting-->
-                <a class="waves-effect waves-light btn" href="/saved" id="saveBtn"><i class="far fa-save"></i></a>
-            </div>
-            {{/each}}
-            <!--Show empty card & scrape button if no articles in DB-->
-            {{else}}
-            <div class="card">
-                <div class="card-content">
-                    <h4 class="card-title">No articles yet - try scraping!</h4>
-                    <a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
+
+                <div>
+                    <!--Comment Modal-->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <div class="row">
+                                <div class="card col s12">
+                                    <h4 id="articleTitle">Comments on this Article:</h4>
+                                    <div id="commentText"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="input-field col s12">
+                                        <input id="titleField" type="text" class="validate">
+                                        <label for="titleField">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <textarea id="bodyField" class="materialize-textarea"></textarea>
+                                        <label for="bodyField">Comment</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="saveCommentBtn"
+                                data-id="{{_id}}">Save Comment</a>
+                        </div>
+                    </div>
                 </div>
+
+                {{/unless}}
+                {{/each}}
+                
+                <!--Show empty card & scrape button if no articles in DB-->
+                {{else}}
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">No articles yet - try scraping!</h4>
+                        <a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
+                    </div>
+                </div>
+                {{/if}}
             </div>
-            {{/if}}
+
+
+
         </div>
-
-        <div id="comments"></div>
+    </div>
     </div>
 
 </main>
