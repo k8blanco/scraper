@@ -14,15 +14,30 @@ $(document).ready(function () {
 
         //Make an ajax call for this article & its comments
         $.ajax({
-            method: "GET",
-            url: "/articles/" + thisId,
-        })
-        //Populate the article & comment information to the page
-        .then(function(data) {
-            console.log(data);
-            console.log(data.comment);
-            // renderComments(data);
-        });
+                method: "GET",
+                url: "/articles/" + thisId,
+            })
+            //Populate the article & comment information to the page
+            .then(function (data) {
+                console.log(data);
+                console.log("article _id", thisId);
+
+                if (data.comment) {
+
+                    for (var i = 0; i < data.comments.length; i++) {
+                        console.log("comment title: " + data.comments[i].title);
+                        console.log("comment body: " + data.comments[i].body);
+
+                        let commentTitle = data.comments[i].title;
+                        let commentBody = data.comments[i].body;
+
+                        $("#commentText").append("<p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>");
+                    };
+                } else {
+                    $("#commentText").text("No comments yet!  Be the first");
+                }
+
+            });
     });
 
     //users should be able to leave comments on the articles displayed and revisit them later
@@ -36,14 +51,14 @@ $(document).ready(function () {
             title: $("#titleField").val().trim(),
             body: $("#bodyField").val().trim()
         }
-        //Make an ajax call for the article
+        //Make an ajax call to update the article
         $.ajax({
                 method: "POST",
                 url: "/articles/" + thisId,
                 data: comment
             })
             .then(function (data) {
-                console.log(data);
+                // console.log(data);
                 $("#titleField").val("");
                 $("#bodyField").val("")
             });
@@ -62,18 +77,23 @@ $(document).ready(function () {
 //     let commentsToRender = [];
 //     let currentComment;
 
-//     if (!data.comments.length) {
+//     if (!data.comment.length) {
 //         currentComment = $("<li class='list-group-item'>No comments for this article yet. Be the first!</li>");
 //         commentsToRender.push(currentComment);
 //     } else {
 //         //turn this into a forEach
-//         for (var i = 0; i < data.comments.length; i++) {
+//         for (var i = 0; i < data.comment.length; i++) {
+//             console.log("comment:", data.comment);
 //             currentComment = $("<li class='list-group-item comment'>")
-//                 .text(data.comments[i].commentText)
+//                 .text(data.comment[i].title)
+//                 .text(data.comment[i].body)
 //                 .append($("<button class='btn comment-delete'>X</button>"));
-//             currentComment.children("button").data("_id", data.comments[i].id);
+//             currentComment.children("button").data("_id", data.comment[i].id);
 //             commentsToRender.push(currentComment);
 //         }
 //     }
 //     $("#commentBody").append(commentsToRender);
 // }
+
+// $("#commentTitle").append("<p>" + data.comment.title + "</p>");
+// $("#commentBody").append("<p>" + data.comment.body + "<p>");
