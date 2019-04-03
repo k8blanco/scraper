@@ -1,6 +1,8 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
+//Unique validator to prevent duplicate db entries
+const uniqueValidator = require("mongoose-unique-validator");
 const logger = require("morgan");
 require("dotenv").config();
 
@@ -37,10 +39,6 @@ app.engine(
     })
 );
 app.set("view engine", "handlebars");
-
-//!! If needed, html/api route links go here !!
-//require("./routs/apiRoutes.js")(app);
-//require("./routes/htmlRoutes.js")(app);
 
 //Testing
 const syncOptions = {
@@ -117,14 +115,9 @@ app.post("/articles/:id", function (req, res) {
     console.log("Saving comment to DB");
     db.Comment.create(req.body)
         .then(function (dbComment) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { comments: dbComment._id } }, { new: true });
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { comments: dbComment._id } }, { new: true }, { runValidators: true, context: 'query' });
         })
         .then(function (dbComment) {
-            // console.log("dbComment: ", dbComment);
-            // let hbsobj = {
-            //     comment: dbComment
-            // };
-            // res.render("index", hbsobj);
             res.json(dbComment);
         })
         .catch(function (err) {
@@ -135,6 +128,7 @@ app.post("/articles/:id", function (req, res) {
 //add route for getting article and populating it  with its comments
 app.get("/articles/:id", function (req, res) {
     console.log("grabbing comments for this article with id: " + req.params.id);
+
     //find the article with this id in the DB
     db.Article.findOne({ _id: req.params.id })
         //find all of the comments associated with it
@@ -142,26 +136,7 @@ app.get("/articles/:id", function (req, res) {
         //turn it into a handlebars object for easy reference
         .then(function(dbArticleComments) {
             console.log("dbArticleComments: ", dbArticleComments);
-            
-            // let commentsTitle;
-            // let commentsBody;
-
-            // for (var i = 0; i < dbArticleComments.comments.length; i++) {
-            //     commentsTitle = dbArticleComments.comments[i].title;
-            //     commentsBody = dbArticleComments.comments[i].body;
-            //     console.log("loop:", commentsTitle, commentsBody);
-            // }
-
-            // console.log("outside loop:", commentsTitle, commentsBody);
-
-            // let hbsCommentObj = {
-            //     commentsTitle,
-            //     commentsBody
-            // };
-
-            // console.log("hbsCommentobj:", hbsCommentObj);
           
-            // res.render("index", hbsCommentObj);
             //if able to successfully find and associate all comments with article, send it back to client
             res.json(dbArticleComments);
 

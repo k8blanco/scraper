@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+//Unique validator to prevent duplicate db entries
+const uniqueValidator = require("mongoose-unique-validator");
 
 //Save ref to Scheme constructor
 const Schema = mongoose.Schema;
@@ -7,11 +9,12 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
     title: {
         type: String,
+        unique: true,
         required: true
     },
     link: {
         type: String,
-        required: true
+        unique: true
     },
     summary: {
         type: String,
@@ -26,6 +29,9 @@ const ArticleSchema = new Schema({
     }
     ]
 });
+
+//Prevent duplicate articles in DB
+ArticleSchema.plugin(uniqueValidator);
 
 //This creates our mongo from the schema above using mongoose's model method
 const Article = mongoose.model("Article", ArticleSchema);
