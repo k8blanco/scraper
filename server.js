@@ -105,7 +105,6 @@ app.get("/scrape", function (req, res) {
                 .catch((err) => console.log(err));
         });
 
-        //Send a message to the client
         res.redirect("/")
     });
 });
@@ -138,15 +137,54 @@ app.get("/articles/:id", function (req, res) {
             console.log("dbArticleComments: ", dbArticleComments);
           
             //if able to successfully find and associate all comments with article, send it back to client
-            res.json(dbArticleComments);
+            res.reload();
             console.log("dbArticleComments JSON: ", dbArticleComments);
 
         })
-        .catch(function (err) {
+        .catch(function(err) {
             res.json(err);
         });
 });
 
+//Route for clearing DB (dev only)
+app.get("/clear", function(req, res) {
+    db.Article.deleteMany({ })
+        .then(function () {
+         res.redirect("back"); 
+        })
+        .catch(function (err) {
+            res.json(err);
+        })
+});
+
+//Route for deleting comments
+app.put("/removecomment:id", function(req, res) {
+    console.log("deleting comment with this id: " + req.params.id)
+    db.Comment.deleteOne({ _id: req.params.id })
+        .then(function() {
+            console.log("Comment Removed!")
+            res.redirect("back");
+        })
+        .catch(function(err) {
+            res.json(err)
+        });
+});
+
+//Route for deleting article (dev only)
+app.put("/removearticle/:id", function(req, res) {
+    console.log("trying to delete: " + req.params.id);
+
+    db.Article.deleteOne({ _id: req.params.id })
+        .then(function() {
+            console.log("Article Removed!")
+        })
+        .catch(function(err) {
+            res.json(err)
+        });
+
+    res.json();
+
+});
 
 
 //Start the server
