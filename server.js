@@ -216,14 +216,14 @@ app.put("/removesaved/:id", function(req, res) {
 
 
 //PUT for deleting comments
-app.put("/removecomment:id", function (req, res) {
+app.put("/removecomment/:id", function (req, res) {
     console.log("deleting comment with this id: " + req.params.id)
     db.Comment.deleteOne({
             _id: req.params.id
         })
-        .then(function () {
+        .then(function(removedComment) {
             console.log("Comment Removed!")
-            res.redirect("back");
+            res.json(removedComment)
         })
         .catch(function (err) {
             res.json(err)

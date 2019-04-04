@@ -34,18 +34,13 @@ $(document).ready(function () {
                         let commentBody = data.comments[i].body;
                         let commentId = data.comments[i]._id;
 
-                        //Constructs the comment list and appends comments/buttons to it
-                        // currentComment = $("<li class='list-group-item comment'>")
-                        //     .append(commentTitle + " says: " + commentBody)
-                        //     .append($("<button class='btn commentDelete'>X</button>"));
-                        // //Store the current comment ID on the button for easy deletion
-                        // currentComment.children("button").data("_id", data.comments[i]._id);
-
                         //Constructs comment list
                         let currentComment = $("#commentText")
-                            .append("<p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
-                            "<button class='btn commentDelete'>X</button>");
-                        currentComment.children("button").data("_id", commentId);
+                            .append("<div class='commentDiv'><p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
+                            "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
+                            // $(".commentDelete").data("id", commentId);
+                        // currentComment.children("button").data("id", commentId);
+                        console.log("current comment id: ", commentId);
                     };
                 } else {
                     $("#commentText").text("No comments yet!  Be the first");
@@ -76,6 +71,23 @@ $(document).ready(function () {
     });
 
     //Delete comment
+    $(document).on("click", ".commentDelete", function() {
+        let deleteId = $(this).attr("data-id");
+        console.log("deleting comment with this id: " + deleteId);
+
+        //Make an ajax call to update the article
+        $.ajax({
+            method: "PUT",
+            url: "/removecomment/" + deleteId,
+        })
+        .then(function() {
+            location.reload();
+  
+        })
+
+    })
+
+
 
     //Delete article
     $(document).on("click", "#deleteBtn", function() {
