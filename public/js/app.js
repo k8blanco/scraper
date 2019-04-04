@@ -11,7 +11,7 @@ $(document).ready(function () {
 
 
     //Displaying all comments
-    $(document).on("click", "#commentBtn", function() {
+    $(document).on("click", "#commentBtn", function () {
         let thisId = $(this).attr("data-id");
         console.log("displaying comments for article id: " + thisId);
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
                 url: "/comments/" + thisId,
             })
             //Populate the article & comment information to the page
-            .then(function(data) {
+            .then(function (data) {
                 if (data.comments) {
                     //loop through comments
                     for (var i = 0; i < data.comments.length; i++) {
@@ -37,8 +37,8 @@ $(document).ready(function () {
                         //Constructs comment list
                         let currentComment = $("#commentText")
                             .append("<div class='commentDiv'><p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
-                            "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
-                            // $(".commentDelete").data("id", commentId);
+                                "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
+                        // $(".commentDelete").data("id", commentId);
                         // currentComment.children("button").data("id", commentId);
                         console.log("current comment id: ", commentId);
                     };
@@ -50,7 +50,7 @@ $(document).ready(function () {
     });
 
     //Save new comment
-    $(document).on("click", "#saveCommentBtn", function() {
+    $(document).on("click", "#saveCommentBtn", function () {
         let saveId = $(this).data("id");
         console.log("saving comment to article with this id: " + saveId);
 
@@ -64,75 +64,75 @@ $(document).ready(function () {
                 url: "/newcomment/" + saveId,
                 data: comment
             })
-            .then(function() {
+            .then(function () {
                 $("#titleField").val("");
                 $("#bodyField").val("")
             });
     });
 
     //Delete comment
-    $(document).on("click", ".commentDelete", function() {
+    $(document).on("click", ".commentDelete", function () {
         let deleteId = $(this).attr("data-id");
         console.log("deleting comment with this id: " + deleteId);
 
         //Make an ajax call to update the article
         $.ajax({
-            method: "PUT",
-            url: "/removecomment/" + deleteId,
-        })
-        .then(function() {
-            location.reload();
-  
-        })
+                method: "PUT",
+                url: "/removecomment/" + deleteId,
+            })
+            .then(function () {
+                location.reload();
+
+            })
 
     })
 
 
 
     //Delete article
-    $(document).on("click", "#deleteBtn", function() {
+    $(document).on("click", "#deleteBtn", function () {
         let thisId = $(this).attr("data-id");
         console.log("deleting article id: " + thisId);
 
         $.ajax({
-            method: "PUT",
-            url: "/removearticle/" + thisId,
-        })
-        .then(function() {
-           console.log("article removed: " + thisId); 
-        })
+                method: "PUT",
+                url: "/removearticle/" + thisId,
+            })
+            .then(function () {
+                console.log("article removed: " + thisId);
+            })
         location.reload();
     });
 
     //Save article
-    $(document).on("click", "#saveBtn", function() {
+    $(document).on("click", "#saveBtn", function () {
         let thisId = $(this).attr("data-id");
         console.log("saving this article: " + thisId);
 
         $.ajax({
-            method: "PUT",
-            url: "/saved/" + thisId
-        })
-        .then(function(data) {
-            console.log("article save complete!");
-            //toast to say it was saved
-        });
+                method: "PUT",
+                url: "/saved/" + thisId
+            })
+            .then(function (data) {
+                console.log("article save complete!");
+                //toast to say it was saved
+            });
         location.reload();
     });
 
     //Remove article from saved
-    $(document).on("click", "#unsaveBtn", function() {
+    $(document).on("click", "#unsaveBtn", function () {
         let thisId = $(this).attr("data-id");
         console.log("removing this article from saved: " + thisId);
 
         $.ajax({
-            method: "PUT",
-            url: "/removesaved/" + thisId
-        })
-        .then(function(data) {
-            console.log("article unsaved!");
-            //toast to say it was removed?? maybe. probably not
-        })
+                method: "PUT",
+                url: "/removesaved/" + thisId
+            })
+            .then(function (data) {
+                console.log("article unsaved!");
+                //toast to say it was removed?? maybe. probably not
+            })
         location.reload();
     });
 
