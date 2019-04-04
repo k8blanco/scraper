@@ -116,6 +116,7 @@ $(document).ready(function () {
             console.log("article save complete!");
             //toast to say it was saved
         });
+        location.reload();
     });
 
     //Remove article from saved
