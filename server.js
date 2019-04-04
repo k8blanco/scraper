@@ -196,7 +196,6 @@ app.put("/saved/:id", function(req, res) {
         })
         .then(function() {
             console.log("Article added to Saved")
-            res.redirect("saved");
         })
         .catch(function (err) {
             res.json(err)
