@@ -141,7 +141,7 @@ app.get("/comments/:id", function (req, res) {
             console.log("dbArticleComments: ", dbArticleComments);
 
             //if able to successfully find and associate all comments with article, send it back to client
-            res.reload();
+            res.json(dbArticleComments);
             console.log("dbArticleComments JSON: ", dbArticleComments);
 
         })
