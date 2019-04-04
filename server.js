@@ -115,7 +115,7 @@ app.post("/articles/:id", function (req, res) {
     console.log("Saving comment to DB");
     db.Comment.create(req.body)
         .then(function (dbComment) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { comments: dbComment._id } }, { new: true }, { runValidators: true, context: 'query' });
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { comments: dbComment._id } }, { new: true } );
         })
         .then(function (dbComment) {
             res.json(dbComment);
@@ -139,6 +139,7 @@ app.get("/articles/:id", function (req, res) {
           
             //if able to successfully find and associate all comments with article, send it back to client
             res.json(dbArticleComments);
+            console.log("dbArticleComments JSON: ", dbArticleComments);
 
         })
         .catch(function (err) {

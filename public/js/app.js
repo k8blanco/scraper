@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    $('.modal').modal();
+    $('.modal').modal({
+        onCloseEnd: function(modal) {
+            $("#commentText").empty();
+        }
+    });
 
 
     //comments
@@ -9,7 +13,9 @@ $(document).ready(function () {
     //all stored comments should be visible 
     //Displaying All Comments
     $(document).on("click", "#commentBtn", function () {
-        const thisId = $(this).attr("data-id");
+        // $("#commentText").empty();
+
+        let thisId = $(this).attr("data-id");
         console.log("displaying comments for article id: " + thisId);
 
         //Make an ajax call for this article & its comments
@@ -22,7 +28,7 @@ $(document).ready(function () {
                 console.log(data);
                 console.log("article _id", thisId);
 
-                if (data.comment) {
+                if (data.comments) {
 
                     for (var i = 0; i < data.comments.length; i++) {
                         console.log("comment title: " + data.comments[i].title);
@@ -39,6 +45,7 @@ $(document).ready(function () {
 
             });
     });
+
 
     //users should be able to leave comments on the articles displayed and revisit them later
     //comments should be saved to db and associated w/ their articles
@@ -64,6 +71,10 @@ $(document).ready(function () {
             });
     });
 
+    //function to clear comment div on modal close
+    function onCloseEnd() {
+        $("#commentText").empty();
+    };
 
 });
 

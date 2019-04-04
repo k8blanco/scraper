@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
     title: String,
-    body: String,
+    body: String
 });
 
 //Prevent duplicate comments in DB
