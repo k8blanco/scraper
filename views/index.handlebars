@@ -3,8 +3,9 @@
         <a href="#" class="brand-logo">Scraper</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="!#">Home</a></li>
-            <li><a href="!#">Saved Articles</a></li>
+            <li><a href="/saved">Saved Articles</a></li>
             <li><a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
+            <li><a class="waves-effect waves-light btn" href="/clear" id="clearDBBtn">Clear Database</a></li>
         </ul>
 
     </div>
@@ -14,8 +15,6 @@
 
     <div id="wrapper">
         <h1>Note Scraper</h1>
-        <h2><i>iF yOu CaN dO tHiS, tHe HoMeWoRk ShOuLd Be No PrObLeM.</i></h2>
-        <h3>{{commentsTitle}}</h3>
 
         <div class="container">
 
@@ -31,15 +30,18 @@
                         <a href="{{link}}" target="_blank">
                             <h4 class="card-title">{{title}}</h4>
                         </a>
-                        <h3>{{context.commentsTitle}}</h3>
-                        <h5 class="article-id">{{_id}}</h5>
                         <p class="summary">{{summary}}</p>
+                        <p class="article-id">{{_id}}</p>
                     </div>
-                    <!--button for saving/favoriting-->
-                    <a class="waves-effect waves-light btn" href="/saved" id="saveBtn"><i class="far fa-save"></i></a>
                     <!--button for commenting/viewing comments-->
                     <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
                         data-id="{{_id}}"><i class="far fa-comments"></i></a>
+                    <!--button for saving/favoriting-->
+                    <a class="waves-effect waves-light btn" href="/saved" id="saveBtn" data-id="{{_id}}"><i
+                            class="far fa-save"></i></a>
+                    <!--button for deleting article-->
+                    <a class="waves-effect waves-light btn" id="deleteBtn" data-id="{{_id}}"><i
+                            class="fas fa-times"></i></a>
                 </div>
 
                 <div>
@@ -75,7 +77,7 @@
 
                 {{/unless}}
                 {{/each}}
-                
+
                 <!--Show empty card & scrape button if no articles in DB-->
                 {{else}}
                 <div class="card">
@@ -94,13 +96,6 @@
     </div>
 
 </main>
-
-{{!-- * Headline - the title of the article
-
- * Summary - a short summary of the article
-
- * URL - the url to the original article --}}
-
 
 
 <footer class="page-footer">
