@@ -56,8 +56,8 @@ $(document).ready(function () {
 
     //Save new comment
     $(document).on("click", "#saveCommentBtn", function() {
-        let thisId = $(this).attr("data-id");
-        console.log("saving comment to article with this id: " + thisId);
+        let saveId = $(this).data("id");
+        console.log("saving comment to article with this id: " + saveId);
 
         let comment = {
             title: $("#titleField").val().trim(),
@@ -66,7 +66,7 @@ $(document).ready(function () {
         //Make an ajax call to update the article
         $.ajax({
                 method: "POST",
-                url: "/newcomment/" + thisId,
+                url: "/newcomment/" + saveId,
                 data: comment
             })
             .then(function() {
