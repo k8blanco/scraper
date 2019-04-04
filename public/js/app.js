@@ -35,11 +35,9 @@ $(document).ready(function () {
                         let commentId = data.comments[i]._id;
 
                         //Constructs comment list
-                        let currentComment = $("#commentText")
+                        $("#commentText")
                             .append("<div class='commentDiv'><p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
                                 "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
-                        // $(".commentDelete").data("id", commentId);
-                        // currentComment.children("button").data("id", commentId);
                         console.log("current comment id: ", commentId);
                     };
                 } else {
@@ -50,7 +48,7 @@ $(document).ready(function () {
     });
 
     //Save new comment
-    $(document).on("click", "#saveCommentBtn", function () {
+    $(document).on("click", "#saveCommentBtn", function() {
         let saveId = $(this).data("id");
         console.log("saving comment to article with this id: " + saveId);
 
@@ -71,7 +69,7 @@ $(document).ready(function () {
     });
 
     //Delete comment
-    $(document).on("click", ".commentDelete", function () {
+    $(document).on("click", ".commentDelete", function() {
         let deleteId = $(this).attr("data-id");
         console.log("deleting comment with this id: " + deleteId);
 
@@ -87,10 +85,8 @@ $(document).ready(function () {
 
     })
 
-
-
     //Delete article
-    $(document).on("click", "#deleteBtn", function () {
+    $(document).on("click", "#deleteBtn", function() {
         let thisId = $(this).attr("data-id");
         console.log("deleting article id: " + thisId);
 
@@ -105,7 +101,7 @@ $(document).ready(function () {
     });
 
     //Save article
-    $(document).on("click", "#saveBtn", function () {
+    $(document).on("click", "#saveBtn", function() {
         let thisId = $(this).attr("data-id");
         console.log("saving this article: " + thisId);
 
@@ -121,7 +117,7 @@ $(document).ready(function () {
     });
 
     //Remove article from saved
-    $(document).on("click", "#unsaveBtn", function () {
+    $(document).on("click", "#unsaveBtn", function() {
         let thisId = $(this).attr("data-id");
         console.log("removing this article from saved: " + thisId);
 
@@ -139,30 +135,3 @@ $(document).ready(function () {
 
 });
 
-
-
-//!! turn this into arrow function !!
-// function renderComments(data) {
-//     let commentsToRender = [];
-//     let currentComment;
-
-//     if (!data.comment.length) {
-//         currentComment = $("<li class='list-group-item'>No comments for this article yet. Be the first!</li>");
-//         commentsToRender.push(currentComment);
-//     } else {
-//         //turn this into a forEach
-//         for (var i = 0; i < data.comment.length; i++) {
-//             console.log("comment:", data.comment);
-//             currentComment = $("<li class='list-group-item comment'>")
-//                 .text(data.comment[i].title)
-//                 .text(data.comment[i].body)
-//                 .append($("<button class='btn comment-delete'>X</button>"));
-//             currentComment.children("button").data("_id", data.comment[i].id);
-//             commentsToRender.push(currentComment);
-//         }
-//     }
-//     $("#commentBody").append(commentsToRender);
-// }
-
-// $("#commentTitle").append("<p>" + data.comment.title + "</p>");
-// $("#commentBody").append("<p>" + data.comment.body + "<p>");
