@@ -10,27 +10,18 @@ $(document).ready(function () {
     //toasts (on db clearing, delete comment, add comment)
 
 
-    //ability to delete comments left on articles
-    // $(document).on("click", ".btn.commentDelete", commentDelete);
-
-    //all stored comments should be visible 
-    //Displaying All Comments
-    $(document).on("click", "#commentBtn", function () {
-        // $("#commentText").empty();
-
+    //Displaying all comments
+    $(document).on("click", "#commentBtn", function() {
         let thisId = $(this).attr("data-id");
         console.log("displaying comments for article id: " + thisId);
 
         //Make an ajax call for this article & its comments
         $.ajax({
                 method: "GET",
-                url: "/articles/" + thisId,
+                url: "/comments/" + thisId,
             })
             //Populate the article & comment information to the page
             .then(function(data) {
-                console.log(data);
-                console.log("article _id", thisId);
-
                 if (data.comments) {
                     //loop through comments
                     for (var i = 0; i < data.comments.length; i++) {
@@ -63,30 +54,28 @@ $(document).ready(function () {
             });
     });
 
-
-    //users should be able to leave comments on the articles displayed and revisit them later
-    //comments should be saved to db and associated w/ their articles
-    //Save New Comment 
-    $(document).on("click", "#saveCommentBtn", function () {
+    //Save new comment
+    $(document).on("click", "#saveCommentBtn", function() {
         let thisId = $(this).attr("data-id");
         console.log("saving comment to article with this id: " + thisId);
 
-        const comment = {
+        let comment = {
             title: $("#titleField").val().trim(),
             body: $("#bodyField").val().trim()
         }
         //Make an ajax call to update the article
         $.ajax({
                 method: "POST",
-                url: "/articles/" + thisId,
+                url: "/newcomment/" + thisId,
                 data: comment
             })
-            .then(function (data) {
-                // console.log(data);
+            .then(function() {
                 $("#titleField").val("");
                 $("#bodyField").val("")
             });
     });
+
+    //Delete comment
 
     //Delete article
     $(document).on("click", "#deleteBtn", function() {

@@ -126,8 +126,8 @@ app.get("/scrape", function (req, res) {
     });
 });
 
-//GET route for getting article and populating it  with its comments
-app.get("/articles/:id", function (req, res) {
+//GET route for getting an article's comments
+app.get("/comments/:id", function (req, res) {
     console.log("grabbing comments for this article with id: " + req.params.id);
 
     //find the article with this id in the DB
@@ -162,7 +162,7 @@ app.get("/clear", function (req, res) {
 });
 
 //POST route for saving a new Comment and associating it with an article
-app.post("/articles/:id", function (req, res) {
+app.post("/newcomment/:id", function (req, res) {
     console.log("Saving comment to DB");
     db.Comment.create(req.body)
         .then(function (dbComment) {
