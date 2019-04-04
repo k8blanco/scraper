@@ -27,7 +27,7 @@ $(document).ready(function () {
                 url: "/articles/" + thisId,
             })
             //Populate the article & comment information to the page
-            .then(function (data) {
+            .then(function(data) {
                 console.log(data);
                 console.log("article _id", thisId);
 
@@ -98,34 +98,46 @@ $(document).ready(function () {
             url: "/removearticle/" + thisId,
         })
         .then(function() {
-           console.log("article removed: " + thisId);
-           
+           console.log("article removed: " + thisId); 
         })
         location.reload();
-    })
+    });
 
+    //Save article
+    $(document).on("click", "#saveBtn", function() {
+        let thisId = $(this).attr("data-id");
+        console.log("saving this article: " + thisId);
 
-    //function to delete comments
-    // function commentDelete() {
-    //     //grab the data id
-    //     let commentToDelete = $(this).data("_id");
+        $.ajax({
+            method: "PUT",
+            url: "/saved/" + thisId
+        })
+        .then(function(data) {
+            console.log("article save complete!");
+            //toast to say it was saved
+        });
+    });
 
-    //     //DELETE req 
-    //     $.ajax({
-    //         url: "/articles/" + commentToDelete,
-    //         method: "DELETE"
-    //     }).then(function () {
-    //         //close modal?
-    //         $("modal").close();
-    //     })
-    // }
+    //Remove article from saved
+    $(document).on("click", "#unsaveBtn", function() {
+        let thisId = $(this).attr("data-id");
+        console.log("removing this article from saved: " + thisId);
+
+        $.ajax({
+            method: "PUT",
+            url: "/removesaved/" + thisId
+        })
+        .then(function(data) {
+            console.log("article unsaved!");
+            //toast to say it was removed?? maybe. probably not
+        })
+        location.reload();
+    });
+
 
 });
 
-//!! turn this into arrow function !!
-// function populateComments(data) {
 
-// }
 
 //!! turn this into arrow function !!
 // function renderComments(data) {

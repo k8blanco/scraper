@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="savedDiv">
+        <!--If there are articles in the DB-->
+        {{#if articles}}
+        <!--For each article, populate a card-->
+        {{#each articles}}
+        <div class="card">
+            <div class="card-content">
+                <a href="{{link}}" target="_blank">
+                    <hr class="card-title">{{title}}</h4>
+                </a>
+                <p class="summary">{{summary}}</p>
+                <p class="article-id">{{_id}}</p>
+            </div>
+            <!--Button for commenting/viewing comments-->
+            <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
+                data-id="{{_id}}"><i class="far fa-comments"></i></a>
+            <!--button for removing article from saved-->
+            <a class="waves-effect waves-light btn" id="unsaveBtn" data-id="{{_id}}"><i
+                    class="fas fa-times"></i></a>
+        </div>
+
+        <!--Comment Modal-->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="card col s12">
+                        <h4 id="articleTitle">Comments on this Article:</h4>
+                        <div id="commentText"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="input-field col s12">
+                            <input id="titleField" type="text" class="validate">
+                            <label for="titleField">Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="bodyField" class="materialize-textarea"></textarea>
+                            <label for="bodyField">Comment</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="saveCommentBtn"
+                    data-id="{{_id}}">Save Comment</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+
+    <!--If no articles in DB at all-->
+    {{else}}
+    <div class="card">
+        <div class="card-content">
+            <h4 class="card-title">No articles saved yet - back to article list?</h4>
+            <a class="waves-effect waves-light btn" href="/" id="backBtn"><i class="fas fa-undo"></i></a></li>
+        </div>
+    </div>
+    {{/if}}
+</div>
+</div>
