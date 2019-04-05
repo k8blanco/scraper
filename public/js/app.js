@@ -37,12 +37,12 @@ $(document).ready(function () {
 
                         //Constructs comment list
                         $("#commentText")
-                            .append("<div class='commentDiv'><p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
-                                "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
+                            .append("<div class='commentDiv'><p class='name col s4'>" + commentTitle + ": " + "</p>" + "<p class='body col s4'>" + commentBody + "</p>" +
+                                "<div class='col s4 left'><button class='btn commentDelete' data-id='" + commentId + "'>X</button></div></div>");
                         console.log("current comment id: ", commentId);
                     };
                 } else {
-                    $("#commentText").text("No comments yet!  Be the first");
+                    $("#commentText").text("No comments yet.  Be the first!");
                 }
 
             });

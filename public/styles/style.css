@@ -145,3 +145,29 @@ h4:hover {
 #commentHeading:hover {
     color: black;
 }
+
+#commentText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.name {
+    font-family: 'Oregano', cursive;
+    font-size: 25px;
+    color: #a92e3f;
+    margin-top: 8px;
+ 
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.commentDelete {
+    margin-bottom: 10px;
+}
