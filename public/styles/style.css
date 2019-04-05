@@ -1,0 +1,173 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.heading {
+    font-family: 'Oregano', cursive;
+    font-size: 70px;
+}
+
+.byline {
+    font-size: 20px;
+    margin-bottom: 3%;
+}
+
+.fa-hand-point-right,
+.fa-hand-point-left {
+    color: #a92e3f;
+}
+
+nav {
+    height: 100px;
+    opacity: 0.8;
+}
+
+footer {
+    font-family: 'Oregano', cursive;
+    font-size: 20px;
+}
+
+.btn {
+    background-color:#a92e3f;
+}
+
+.btn:hover {
+    background-color: darkred;
+}
+
+.btn:focus {
+    background-color: darkred;
+}
+
+.btn:visited {
+    background-color:#a92e3f;
+}
+
+.cardBtn {
+    font-family: 'Oregano', cursive;
+    color: #a92e3f;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.cardBtn:hover {
+    background-color: darkred;
+}
+
+.cardBtn:focus{
+    background-color: darkred;
+}
+
+.cardBtn:visited {
+    background-color: darkred;
+}
+
+#savedLink {
+    color: #a92e3f;
+    margin-top: 15px;
+    font-family: 'Oregano', cursive;
+    text-transform: uppercase;
+    font-size: 20px;
+    /* margin-left: 10%; */
+}
+
+#homeLink {
+    color: #a92e3f;
+    margin-top: 15px;
+    font-family: 'Oregano', cursive;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+#scraperBtn {
+    font-family: 'Oregano', cursive;
+    color: #a92e3f;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#clearDBBtn {
+    font-family: 'Oregano', cursive;
+    color: #a92e3f;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.parallax-container {
+    height: 500px;
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: black;
+    font-weight: 700;
+}
+
+h4:hover {
+    color:#a92e3f;
+}
+
+.summary {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+#modalFooter {
+    background-color:#a92e3f;
+}
+
+#saveCommentBtn {
+    color: white;
+}
+
+#saveCommentBtn:hover {
+    background-color: beige;
+    color: #a92e3f;
+}
+
+#saveCommentBtn:focus {
+    background-color: beige;
+    color: #a92e3f;
+}
+
+#saveCommentBtn:visited {
+    color: white;
+}
+
+#commentHeading {
+    font-family: 'Oregano', cursive;
+    text-transform: uppercase;
+}
+
+#commentHeading:hover {
+    color: black;
+}
+
+#commentText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.name {
+    font-family: 'Oregano', cursive;
+    font-size: 25px;
+    color: #a92e3f;
+    margin-top: 8px;
+ 
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.commentDelete {
+    margin-bottom: 10px;
+}

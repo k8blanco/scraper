@@ -1,4 +1,6 @@
 <div class="container">
+          <h1 class="heading center">Saved Onions</h1>
+        <p class="byline center"><i class="fas fa-hand-point-right fa-lg"></i> always better a day old! <i class="fas fa-hand-point-left fa-lg"></i></p>
     <div class="savedDiv">
         <!--If there are articles in the DB-->
         {{#if articles}}
@@ -6,18 +8,19 @@
         {{#each articles}}
         <div class="card">
             <div class="card-content">
+                <div class="right">
+                <!--Button for commenting/viewing comments-->
+                <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
+                    data-id="{{_id}}"><i class="far fa-comments"></i></a>
+                <!--button for removing article from saved-->
+                <a class="waves-effect waves-light btn" id="unsaveBtn" data-id="{{_id}}"><i
+                        class="fas fa-times"></i></a>
+                </div>
                 <a href="{{link}}" target="_blank">
-                    <hr class="card-title">{{title}}</h4>
+                    <h4 class="card-title">{{title}}</h4>
                 </a>
                 <p class="summary">{{summary}}</p>
-                <p class="article-id">{{_id}}</p>
             </div>
-            <!--Button for commenting/viewing comments-->
-            <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
-                data-id="{{_id}}"><i class="far fa-comments"></i></a>
-            <!--button for removing article from saved-->
-            <a class="waves-effect waves-light btn" id="unsaveBtn" data-id="{{_id}}"><i
-                    class="fas fa-times"></i></a>
         </div>
 
         <!--Comment Modal-->
@@ -54,9 +57,9 @@
     <!--If no articles in DB at all-->
     {{else}}
     <div class="card">
-        <div class="card-content">
-            <h4 class="card-title">No articles saved yet - back to article list?</h4>
+        <div class="card-content center">
             <a class="waves-effect waves-light btn" href="/" id="backBtn"><i class="fas fa-undo"></i></a></li>
+            <h4 class="card-title">No articles saved yet - back to article list?</h4>
         </div>
     </div>
     {{/if}}

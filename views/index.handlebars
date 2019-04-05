@@ -1,20 +1,9 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Scraper</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="!#">Home</a></li>
-            <li><a href="/saved">Saved Articles</a></li>
-            <li><a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
-            <li><a class="waves-effect waves-light btn" href="/clear" id="clearDBBtn">Clear Database</a></li>
-        </ul>
-
-    </div>
-</nav>
-
 <main>
 
     <div id="wrapper">
-        <h1>Note Scraper</h1>
+        <h1 class="heading center">Scraping Onions</h1>
+        <p class="byline center"><i class="fas fa-hand-point-right fa-lg"></i> because sometimes, going to the original
+            website is just too hard. <i class="fas fa-hand-point-left fa-lg"></i></p>
 
         <div class="container">
 
@@ -25,32 +14,34 @@
                 {{#each article}}
                 {{#unless isSaved}}
 
-                <div class="card">
+                <div class="card z-depth-2">
                     <div class="card-content">
+                        <div class="right">
+                        <!--button for commenting/viewing comments-->
+                        <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
+                            data-id="{{_id}}"><i class="far fa-comments"></i></a>
+                        <!--button for saving/favoriting-->
+                        <a class="waves-effect waves-light btn" id="saveBtn" data-id="{{_id}}"><i
+                                class="far fa-save"></i></a>
+                        <!--button for deleting article-->
+                        <a class="waves-effect waves-light btn" id="deleteBtn" data-id="{{_id}}"><i
+                                class="fas fa-times"></i></a>
+                        </div>
                         <a href="{{link}}" target="_blank">
                             <h4 class="card-title">{{title}}</h4>
                         </a>
                         <p class="summary">{{summary}}</p>
-                        <p class="article-id">{{_id}}</p>
                     </div>
-                    <!--button for commenting/viewing comments-->
-                    <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
-                        data-id="{{_id}}"><i class="far fa-comments"></i></a>
-                    <!--button for saving/favoriting-->
-                    <a class="waves-effect waves-light btn" id="saveBtn" data-id="{{_id}}"><i
-                            class="far fa-save"></i></a>
-                    <!--button for deleting article-->
-                    <a class="waves-effect waves-light btn" id="deleteBtn" data-id="{{_id}}"><i
-                            class="fas fa-times"></i></a>
+
                 </div>
 
                 <div>
                     <!--Comment Modal-->
-                    <div id="modal1" class="modal">
+                    <div id="modal1" class="modal z-depth-3 orange lighten-5">
                         <div class="modal-content">
                             <div class="row">
-                                <div class="card col s12">
-                                    <h4 id="articleTitle">Comments on this Article:</h4>
+                                <div class="card col s8 push-s2 z-depth-1 orange lighten-5">
+                                    <h4 id="commentHeading">Comments:</h4>
                                     <div id="commentText"></div>
                                 </div>
                             </div>
@@ -68,8 +59,8 @@
                             </div>
                         </div>
 
-                        <div class="modal-footer">
-                            <a class="modal-close waves-effect waves-green btn-flat" id="saveCommentBtn"
+                        <div class="modal-footer" id="modalFooter">
+                            <a class="modal-close waves-effect btn-flat" id="saveCommentBtn"
                                 data-id="{{_id}}">Save Comment</a>
                         </div>
                     </div>
@@ -82,8 +73,11 @@
                 {{else}}
                 <div class="card">
                     <div class="card-content">
-                        <h4 class="card-title">No articles yet - try scraping!</h4>
-                        <a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape Articles</a></li>
+                        <h4 class="card-title center">No articles yet - try scraping!</h4>
+                        <div class="center">
+                            <a class="waves-effect waves-light btn white-text cardBtn" href="/scrape"
+                                id="scraperBtn">Scrape the Onions!</a></li>
+                        </div>
                     </div>
                 </div>
                 {{/if}}
@@ -96,13 +90,3 @@
     </div>
 
 </main>
-
-
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            © 2019 k8blanco
-            <a class="grey-text text-lighten-4 right" href="https://github.com/k8blanco">Github</a>
-        </div>
-    </div>
-</footer>

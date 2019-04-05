@@ -4,6 +4,7 @@ $(document).ready(function () {
             $("#commentText").empty();
         }
     });
+    $(".parallax").parallax();
 
 
     //comments
@@ -22,7 +23,7 @@ $(document).ready(function () {
             })
             //Populate the article & comment information to the page
             .then(function (data) {
-                if (data.comments) {
+                if (data.comments.length >= 1) {
                     //loop through comments
                     for (var i = 0; i < data.comments.length; i++) {
                         console.log("comment title: " + data.comments[i].title);
@@ -36,12 +37,12 @@ $(document).ready(function () {
 
                         //Constructs comment list
                         $("#commentText")
-                            .append("<div class='commentDiv'><p class='name'>" + commentTitle + ": " + "</p>" + "<p class='body'>" + commentBody + "</p>" +
-                                "<button class='btn commentDelete' data-id='" + commentId + "'>X</button></div>");
+                            .append("<div class='commentDiv'><p class='name col s4'>" + commentTitle + ": " + "</p>" + "<p class='body col s4'>" + commentBody + "</p>" +
+                                "<div class='col s4 left'><button class='btn commentDelete' data-id='" + commentId + "'>X</button></div></div>");
                         console.log("current comment id: ", commentId);
                     };
                 } else {
-                    $("#commentText").text("No comments yet!  Be the first");
+                    $("#commentText").text("No comments yet.  Be the first!");
                 }
 
             });
