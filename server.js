@@ -56,7 +56,7 @@ mongoose.connect(MONGODB_URI);
 
 //Routes
 
-//turn these all into arrow functions where possible
+
 
 //Main Route
 app.get("/", (req, res) => {
