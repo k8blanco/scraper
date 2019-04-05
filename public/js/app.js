@@ -23,7 +23,7 @@ $(document).ready(function () {
             })
             //Populate the article & comment information to the page
             .then(function (data) {
-                if (data.comments) {
+                if (data.comments.length >= 1) {
                     //loop through comments
                     for (var i = 0; i < data.comments.length; i++) {
                         console.log("comment title: " + data.comments[i].title);

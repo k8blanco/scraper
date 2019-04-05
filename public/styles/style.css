@@ -101,7 +101,7 @@ footer {
 
 h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     color: black;
     font-weight: 700;
 }
@@ -109,27 +109,39 @@ h4 {
 h4:hover {
     color:#a92e3f;
 }
-/* 
-.commentBtn,
-.saveBtn,
-.deleteBtn {
-    border: solid 1px black;
+
+.summary {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
 }
 
-.commentBtn:hover
-.saveBtn:hover,
-.deleteBtn:hover  {
-    background-color: darkred;
-}
-
-.commentBtn:focus
-.saveBtn:focus,
-.deleteBtn:focus  {
-    background-color: darkred;
-}
-
-.commentBtn:visited
-.saveBtn:visited,
-.deleteBtn:visited {
+#modalFooter {
     background-color:#a92e3f;
-} */
+}
+
+#saveCommentBtn {
+    color: white;
+}
+
+#saveCommentBtn:hover {
+    background-color: beige;
+    color: #a92e3f;
+}
+
+#saveCommentBtn:focus {
+    background-color: beige;
+    color: #a92e3f;
+}
+
+#saveCommentBtn:visited {
+    color: white;
+}
+
+#commentHeading {
+    font-family: 'Oregano', cursive;
+    text-transform: uppercase;
+}
+
+#commentHeading:hover {
+    color: black;
+}

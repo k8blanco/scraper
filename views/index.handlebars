@@ -31,18 +31,17 @@
                             <h4 class="card-title">{{title}}</h4>
                         </a>
                         <p class="summary">{{summary}}</p>
-                        <p class="article-id">{{_id}}</p>
                     </div>
 
                 </div>
 
                 <div>
                     <!--Comment Modal-->
-                    <div id="modal1" class="modal">
+                    <div id="modal1" class="modal z-depth-3 orange lighten-5">
                         <div class="modal-content">
                             <div class="row">
-                                <div class="card col s12">
-                                    <h4 id="articleTitle">Comments on this Article:</h4>
+                                <div class="card col s12 z-depth-1 orange lighten-5">
+                                    <h4 id="commentHeading">Comments:</h4>
                                     <div id="commentText"></div>
                                 </div>
                             </div>
@@ -60,8 +59,8 @@
                             </div>
                         </div>
 
-                        <div class="modal-footer">
-                            <a class="modal-close waves-effect waves-green btn-flat" id="saveCommentBtn"
+                        <div class="modal-footer" id="modalFooter">
+                            <a class="modal-close waves-effect btn-flat" id="saveCommentBtn"
                                 data-id="{{_id}}">Save Comment</a>
                         </div>
                     </div>
