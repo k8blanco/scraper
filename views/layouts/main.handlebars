@@ -7,22 +7,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!--CSS-->
-    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
         integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 
-    <title>Scraper</title>
+    <title>Scraping Onions</title>
+
 </head>
 
+<nav>
+    <div class="nav-wrapper orange lighten-5">
+        <a href="#" class="brand-logo"><img src="img/onion-illust.svg" style="height: 80px"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" id="homeLink">Home</a></li>
+            <li><a href="/saved" id="savedLink">Saved Articles</a></li>
+            <li><a class="waves-effect waves-light btn" href="/scrape" id="scraperBtn">Scrape the Onions!</a></li>
+            <li><a class="waves-effect waves-light btn" href="/clear" id="clearDBBtn">Trash the Onions!</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+{{!-- <div class="imgContainer" style="min-height: 500px"></div> --}}
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="img/onions-smaller.jpg">
+    </div>
+</div>
+
+<div class="section z-depth-3 orange lighten-5">
+
 <body>
-
     {{{body}}}
-
-
 </body>
 
+</div>
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="img/onion-bulbs.jpg">
+    </div>
+</div>
+</main>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 k8blanco
+            <a class="grey-text text-lighten-4 right" href="https://github.com/k8blanco">Github</a>
+        </div>
+    </div>
+</footer>
 <!--JS-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/app.js"></script>

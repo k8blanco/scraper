@@ -4,6 +4,7 @@ $(document).ready(function () {
             $("#commentText").empty();
         }
     });
+    $(".parallax").parallax();
 
 
     //comments

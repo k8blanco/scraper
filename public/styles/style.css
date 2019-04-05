@@ -1,0 +1,29 @@
+
+
+nav {
+    height: 100px;
+}
+
+.btn {
+    background-color:#a92e3f;
+}
+
+#savedLink {
+    color: #a92e3f;
+    margin-top: 15%;
+}
+
+#homeLink {
+    color: #a92e3f;
+    margin-top: 28%;
+}
+
+
+#scraperBtn,
+#clearDBBtn {
+    margin-top: 15%;
+}
+
+/* .section {
+    background-color: #f6f0da;
+} */
