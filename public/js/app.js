@@ -6,11 +6,6 @@ $(document).ready(function () {
     });
     $(".parallax").parallax();
 
-
-    //comments
-    //toasts (on db clearing, delete comment, add comment)
-
-
     //Displaying all comments
     $(document).on("click", "#commentBtn", function () {
         let thisId = $(this).attr("data-id");
@@ -37,8 +32,8 @@ $(document).ready(function () {
 
                         //Constructs comment list
                         $("#commentText")
-                            .append("<div class='commentDiv'><p class='name col s4'>" + commentTitle + ": " + "</p>" + "<p class='body col s4'>" + commentBody + "</p>" +
-                                "<div class='col s4 left'><button class='btn commentDelete' data-id='" + commentId + "'>X</button></div></div>");
+                            .append("<div class='commentDiv'><div class='row'><p class='name col s4'>" + commentTitle + ": " + "</p>" + "<p class='body col s4'>" + commentBody + "</p>" +
+                                "<div class='col s4 left'><button class='btn commentDelete' data-id='" + commentId + "'>X</button></div></div></div>");
                         console.log("current comment id: ", commentId);
                     };
                 } else {
@@ -64,6 +59,7 @@ $(document).ready(function () {
                 data: comment
             })
             .then(function () {
+                //empty fields
                 $("#titleField").val("");
                 $("#bodyField").val("")
             });
@@ -81,9 +77,7 @@ $(document).ready(function () {
             })
             .then(function () {
                 location.reload();
-
             })
-
     })
 
     //Delete article
@@ -112,7 +106,6 @@ $(document).ready(function () {
             })
             .then(function (data) {
                 console.log("article save complete!");
-                //toast to say it was saved
             });
         location.reload();
     });
@@ -128,7 +121,6 @@ $(document).ready(function () {
             })
             .then(function (data) {
                 console.log("article unsaved!");
-                //toast to say it was removed?? maybe. probably not
             })
         location.reload();
     });
