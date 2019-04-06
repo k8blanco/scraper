@@ -1,19 +1,20 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
 }
 .heading {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     font-size: 70px;
+    text-transform: uppercase;
 }
 
 .byline {
-    font-size: 20px;
+    font-size: 35px;
     margin-bottom: 3%;
 }
 
 .fa-hand-point-right,
 .fa-hand-point-left {
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 nav {
@@ -22,74 +23,84 @@ nav {
 }
 
 footer {
-    font-family: 'Oregano', cursive;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
 }
 
+.copyright {
+    color: #e67a31;
+    padding-top: 10px;
+}
+
+.footerLink {
+    color: #e67a31;
+    padding-top: 5px;
+}
+
 .btn {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 .btn:hover {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .btn:focus {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .btn:visited {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 .cardBtn {
-    font-family: 'Oregano', cursive;
-    color: #a92e3f;
+    font-family: 'Arima Madurai', cursive;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
 }
 
 .cardBtn:hover {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .cardBtn:focus{
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .cardBtn:visited {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 #savedLink {
-    color: #a92e3f;
+    color: #f4ab58;
     margin-top: 15px;
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
     font-size: 20px;
     /* margin-left: 10%; */
 }
 
 #homeLink {
-    color: #a92e3f;
+    color: #f4ab58;
     margin-top: 15px;
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
     font-size: 20px;
 }
 
 #scraperBtn {
-    font-family: 'Oregano', cursive;
-    color: #a92e3f;
+    font-family: 'Arima Madurai', cursive;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
 }
 
 #clearDBBtn {
-    font-family: 'Oregano', cursive;
-    color: #a92e3f;
+    font-family: 'Arima Madurai', cursive;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
@@ -100,23 +111,23 @@ footer {
 }
 
 h4 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 30px;
     color: black;
     font-weight: 700;
 }
 
 h4:hover {
-    color:#a92e3f;
+    color:#f4ab58;
 }
 
 .summary {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
 }
 
 #modalFooter {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 #saveCommentBtn {
@@ -125,20 +136,24 @@ h4:hover {
 
 #saveCommentBtn:hover {
     background-color: beige;
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 #saveCommentBtn:focus {
     background-color: beige;
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 #saveCommentBtn:visited {
     color: white;
 }
 
+.modal {
+    background-image: url("/img/onion-bulbs.jpg");
+}
+
 #commentHeading {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
 }
 
@@ -146,23 +161,31 @@ h4:hover {
     color: black;
 }
 
+.commentDiv {
+    padding-top: 20px;
+}
+
 #commentText {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
     text-align: center;
     padding-bottom: 40px;
 }
 
+.section {
+    background: rgb(244,171,88); /* for browsers w/o RGBA support */
+    background: rgba(244,171,88,0.55);
+}
+
 .name {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     font-size: 25px;
-    color: #a92e3f;
-    margin-top: 8px;
- 
+    color: #f4ab58;
+    margin-top: 8px; 
 }
 
 .body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
     padding-top: 10px;
     margin-top: 10px;
