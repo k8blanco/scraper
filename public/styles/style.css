@@ -8,13 +8,13 @@ body {
 }
 
 .byline {
-    font-size: 20px;
+    font-size: 35px;
     margin-bottom: 3%;
 }
 
 .fa-hand-point-right,
 .fa-hand-point-left {
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 nav {
@@ -27,44 +27,54 @@ footer {
     font-size: 20px;
 }
 
+.copyright {
+    color: #e67a31;
+    padding-top: 10px;
+}
+
+.footerLink {
+    color: #e67a31;
+    padding-top: 5px;
+}
+
 .btn {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 .btn:hover {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .btn:focus {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .btn:visited {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 .cardBtn {
     font-family: 'Arima Madurai', cursive;
-    color: #a92e3f;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
 }
 
 .cardBtn:hover {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .cardBtn:focus{
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 .cardBtn:visited {
-    background-color: darkred;
+    background-color: #e67a31;
 }
 
 #savedLink {
-    color: #a92e3f;
+    color: #f4ab58;
     margin-top: 15px;
     font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
@@ -73,7 +83,7 @@ footer {
 }
 
 #homeLink {
-    color: #a92e3f;
+    color: #f4ab58;
     margin-top: 15px;
     font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
@@ -82,7 +92,7 @@ footer {
 
 #scraperBtn {
     font-family: 'Arima Madurai', cursive;
-    color: #a92e3f;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
@@ -90,7 +100,7 @@ footer {
 
 #clearDBBtn {
     font-family: 'Arima Madurai', cursive;
-    color: #a92e3f;
+    color: #f4ab58;
     text-transform: uppercase;
     font-size: 20px;
     margin-top: 15px;
@@ -108,7 +118,7 @@ h4 {
 }
 
 h4:hover {
-    color:#a92e3f;
+    color:#f4ab58;
 }
 
 .summary {
@@ -117,7 +127,7 @@ h4:hover {
 }
 
 #modalFooter {
-    background-color:#a92e3f;
+    background-color:#f4ab58;
 }
 
 #saveCommentBtn {
@@ -126,12 +136,12 @@ h4:hover {
 
 #saveCommentBtn:hover {
     background-color: beige;
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 #saveCommentBtn:focus {
     background-color: beige;
-    color: #a92e3f;
+    color: #f4ab58;
 }
 
 #saveCommentBtn:visited {
@@ -162,12 +172,16 @@ h4:hover {
     padding-bottom: 40px;
 }
 
+.section {
+    background: rgb(244,171,88); /* for browsers w/o RGBA support */
+    background: rgba(244,171,88,0.55);
+}
+
 .name {
     font-family: 'Arima Madurai', cursive;
     font-size: 25px;
-    color: #a92e3f;
-    margin-top: 8px;
- 
+    color: #f4ab58;
+    margin-top: 8px; 
 }
 
 .body {
