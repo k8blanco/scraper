@@ -1,9 +1,10 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
 }
 .heading {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     font-size: 70px;
+    text-transform: uppercase;
 }
 
 .byline {
@@ -22,7 +23,7 @@ nav {
 }
 
 footer {
-    font-family: 'Oregano', cursive;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
 }
 
@@ -43,7 +44,7 @@ footer {
 }
 
 .cardBtn {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     color: #a92e3f;
     text-transform: uppercase;
     font-size: 20px;
@@ -65,7 +66,7 @@ footer {
 #savedLink {
     color: #a92e3f;
     margin-top: 15px;
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
     font-size: 20px;
     /* margin-left: 10%; */
@@ -74,13 +75,13 @@ footer {
 #homeLink {
     color: #a92e3f;
     margin-top: 15px;
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
     font-size: 20px;
 }
 
 #scraperBtn {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     color: #a92e3f;
     text-transform: uppercase;
     font-size: 20px;
@@ -88,7 +89,7 @@ footer {
 }
 
 #clearDBBtn {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     color: #a92e3f;
     text-transform: uppercase;
     font-size: 20px;
@@ -100,7 +101,7 @@ footer {
 }
 
 h4 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 30px;
     color: black;
     font-weight: 700;
@@ -111,7 +112,7 @@ h4:hover {
 }
 
 .summary {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
 }
 
@@ -138,7 +139,7 @@ h4:hover {
 }
 
 #commentHeading {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
 }
 
@@ -147,14 +148,14 @@ h4:hover {
 }
 
 #commentText {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
     text-align: center;
     padding-bottom: 40px;
 }
 
 .name {
-    font-family: 'Oregano', cursive;
+    font-family: 'Arima Madurai', cursive;
     font-size: 25px;
     color: #a92e3f;
     margin-top: 8px;
@@ -162,7 +163,7 @@ h4:hover {
 }
 
 .body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poiret One', cursive;
     font-size: 20px;
     padding-top: 10px;
     margin-top: 10px;
