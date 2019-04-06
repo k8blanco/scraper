@@ -138,6 +138,10 @@ h4:hover {
     color: white;
 }
 
+.modal {
+    background-image: url("/img/onion-bulbs.jpg");
+}
+
 #commentHeading {
     font-family: 'Arima Madurai', cursive;
     text-transform: uppercase;
@@ -145,6 +149,10 @@ h4:hover {
 
 #commentHeading:hover {
     color: black;
+}
+
+.commentDiv {
+    padding-top: 20px;
 }
 
 #commentText {

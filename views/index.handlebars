@@ -17,15 +17,15 @@
                 <div class="card z-depth-2">
                     <div class="card-content">
                         <div class="right">
-                        <!--button for commenting/viewing comments-->
-                        <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
-                            data-id="{{_id}}"><i class="far fa-comments"></i></a>
-                        <!--button for saving/favoriting-->
-                        <a class="waves-effect waves-light btn" id="saveBtn" data-id="{{_id}}"><i
-                                class="far fa-save"></i></a>
-                        <!--button for deleting article-->
-                        <a class="waves-effect waves-light btn" id="deleteBtn" data-id="{{_id}}"><i
-                                class="fas fa-times"></i></a>
+                            <!--button for commenting/viewing comments-->
+                            <a class="waves-effect waves-light btn modal-trigger" data-target="modal1" id="commentBtn"
+                                data-id="{{_id}}"><i class="far fa-comments"></i></a>
+                            <!--button for saving/favoriting-->
+                            <a class="waves-effect waves-light btn" id="saveBtn" data-id="{{_id}}"><i
+                                    class="far fa-save"></i></a>
+                            <!--button for deleting article-->
+                            <a class="waves-effect waves-light btn" id="deleteBtn" data-id="{{_id}}"><i
+                                    class="fas fa-times"></i></a>
                         </div>
                         <a href="{{link}}" target="_blank">
                             <h4 class="card-title">{{title}}</h4>
@@ -37,56 +37,71 @@
 
                 <div>
                     <!--Comment Modal-->
-                    <div id="modal1" class="modal z-depth-3 orange">
+                    <div id="modal1" class="modal z-depth-3">
                         <div class="modal-content">
+                            <h4 id="commentHeading">Comments:</h4>
                             <div class="row">
-                                <div class="card col s8 push-s2 z-depth-1">
-                                    <h4 id="commentHeading">Comments:</h4>
+
+                                <div class="card col s12 z-depth-1">
                                     <div id="commentText"></div>
                                 </div>
                             </div>
                             <div class="row">
-                                <form class="col s12">
-                                    <div class="input-field col s12">
-                                        <input id="titleField" type="text" class="validate">
-                                        <label for="titleField">Name</label>
+                                <div class="col s12">
+                                    <h4 id="commentHeading">Add a Comment:</h4>
+                                    <div class="card">
+                                        <div class="card-content">
+
+                                            <form class="container">
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <input id="titleField" type="text" class="validate">
+                                                        <label for="titleField">Name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <textarea id="bodyField"
+                                                            class="materialize-textarea"></textarea>
+                                                        <label for="bodyField">Comment</label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer" id="modalFooter">
+                                            <a class="modal-close waves-effect btn-flat" id="saveCommentBtn"
+                                                data-id="{{_id}}">Save
+                                                Comment</a>
+                                        </div>
                                     </div>
-                                    <div class="input-field col s12">
-                                        <textarea id="bodyField" class="materialize-textarea"></textarea>
-                                        <label for="bodyField">Comment</label>
-                                    </div>
-                                </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {{/unless}}
+                    {{/each}}
+
+                    <!--Show empty card & scrape button if no articles in DB-->
+                    {{else}}
+                    <div class="card">
+                        <div class="card-content">
+                            <h4 class="card-title center">No articles yet - try scraping!</h4>
+                            <div class="center">
+                                <a class="waves-effect waves-light btn white-text cardBtn" href="/scrape"
+                                    id="scraperBtn">Scrape the Onions!</a></li>
                             </div>
                         </div>
-
-                        <div class="modal-footer" id="modalFooter">
-                            <a class="modal-close waves-effect btn-flat" id="saveCommentBtn"
-                                data-id="{{_id}}">Save Comment</a>
-                        </div>
                     </div>
+                    {{/if}}
                 </div>
 
-                {{/unless}}
-                {{/each}}
 
-                <!--Show empty card & scrape button if no articles in DB-->
-                {{else}}
-                <div class="card">
-                    <div class="card-content">
-                        <h4 class="card-title center">No articles yet - try scraping!</h4>
-                        <div class="center">
-                            <a class="waves-effect waves-light btn white-text cardBtn" href="/scrape"
-                                id="scraperBtn">Scrape the Onions!</a></li>
-                        </div>
-                    </div>
-                </div>
-                {{/if}}
+
             </div>
-
-
-
         </div>
-    </div>
     </div>
 
 </main>
